@@ -1,7 +1,11 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, Pressable, Alert } from 'react-native';
+import { StyleSheet, Text, View, Image, Pressable, Alert, ScrollView } from 'react-native';
+import { FontAwesome6 } from "@expo/vector-icons";
+
+
 export default function App() {
+
 
   const showAlert = () => {
     Alert.alert("Hello!", "This is a simple alert.");
@@ -13,86 +17,73 @@ export default function App() {
 
       {/* Start Header part */}
 
-      <LinearGradient colors={['#58b4ed', '#ffffff']}
+      <LinearGradient colors={['#80b4ed', '#99ffff']}
         style={styles.Linear}
         start={{ x: 1, y: 0 }}
         end={{ x: 0, y: 1 }}  >
         <View style={styles.view1}>
-          <Image source={require('./assets/image/logo.png')} contentFit={"contain"} style={styles.logo} />
-          <Text style={styles.logoText}>Smart Cooker</Text>
+          <FontAwesome6 name={"arrow-left"} color={"white"} size={24} />
         </View >
-      </LinearGradient>
-      {/* End Header part */}
 
-      {/* start recipies text view */}
-      <View style={styles.view3}>
-        <Text style={styles.rText}>Recipies</Text>
-      </View>
-      {/* end recipies text view */}
+        <View style={styles.view3}>
 
-
-      {/* Start recipi view */}
-      <View style={styles.reView}>
-
-        {/* start producy*/}
-        <Pressable style={styles.proView}
-          onPress={showAlert}>
-          <View style={styles.prDetailsView}>
-            <View style={styles.imgView}>
-              <Image source={require('./assets/image/watalappan.jpg')} contentFit={"contain"} style={styles.pImage} />
-            </View>
-            <View style={styles.pdView}>
-              <Text style={styles.pTitle}>Watalappan</Text>
-              <Text style={styles.pDiscription}>
-              Watalappan is a creamy Sri Lankan dessert with jaggery, 
-              coconut milk, and spices, enjoyed at festivals.
-                </Text>
-              <Text style={styles.pTime}>Time : 15 : 00 Min</Text>
-
-            </View>
+          <View>
+            <Text style={styles.title1}>Watalappan</Text>
           </View>
 
+          <View>
+          <Text style={styles.time}>Time : 15 : 00 Min</Text>
+          </View>      
+        
+        </View >
+      </LinearGradient>
 
-
-        </Pressable>
-
-        <LinearGradient colors={['#01b4ed', '#88ff89']}
-          style={styles.proView}
-          start={{ x: 1, y: 0 }}
-          end={{ x: 0, y: 1 }}  >
-
-
-
-        </LinearGradient>
-
-        <LinearGradient colors={['#01b4ed', '#88ff89']}
-          style={styles.proView}
-          start={{ x: 1, y: 0 }}
-          end={{ x: 0, y: 1 }}  >
+      {/* End Header part */}
 
 
 
+      {/* start ingedient view couple*/}
 
-        </LinearGradient>
+      <ScrollView style={styles.scrollView1}>
 
-        <LinearGradient colors={['#01b4ed', '#88ff89']}
-          style={styles.proView}
-          start={{ x: 1, y: 0 }}
-          end={{ x: 0, y: 1 }}  >
-
-
-
-        </LinearGradient>
-
-        <View >
-
+        <View style={styles.imgView}>
+          <Image source={require('./assets/image/watalappan.jpg')} contentFit={"contain"} style={styles.pImage} />
+          <View style={styles.ingredientSite} >
+            <Text style={styles.ingText}>
+              First you have to add 4 eggs and crush
+            </Text>
+            <Pressable style={styles.checkBtn} onPress={showAlert}>
+              <Text>Done</Text>
+            </Pressable>
+          </View>
         </View>
-        {/* end produc */}
 
+        <View style={styles.imgView}>
+          <Image source={require('./assets/image/watalappan.jpg')} contentFit={"contain"} style={styles.pImage} />
+          <View style={styles.ingredientSite} >
+            <Text style={styles.ingText}>
+              First you have to add 4 eggs and crush
+            </Text>
+            <Pressable style={styles.checkBtn} onPress={showAlert}>
+              <Text>Done</Text>
+            </Pressable>
+          </View>
+        </View>
+
+
+
+      </ScrollView>
+      {/* end ingridient view couple */}
+
+      <View style={styles.startBtn}>
+        <Pressable>
+          <Text>Start</Text>
+        </Pressable>
       </View>
 
-      {/* Start recipi view */}
 
+
+      {/* end produc */}
 
     </View>
 
@@ -103,17 +94,18 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+
   Linear: {
-    height: "20%",
+    height: "18%",
     width: "100%"
 
   },
 
   view1: {
     flex: 1,
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
+    marginTop: 50,
+    marginStart: 20,
+    alignItems: "flex-start",
   },
 
   view2: {
@@ -122,85 +114,60 @@ const styles = StyleSheet.create({
   },
 
   view3: {
-    backgroundColor: "white",
-    justifyContent: "flex-start",
-  },
-
-  logo: {
-    width: 100,
-    height: 100,
-  },
-
-  logoText: {
-    fontSize: 30,
-    fontWeight: "bold"
-
-  },
-
-  rText: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    marginStart: 30,
-    marginTop: 20,
-  },
-
-  reView: {
     flex: 1,
+    flexDirection: "row",
     justifyContent: "flex-start",
-    alignItems: "center",
+    alignItems: "flex-end",
+    marginStart: 20,
+
+
+  },
+  time: {
+    fontSize: 15,
+    marginStart: 40,
+    fontWeight: "bold",
 
   },
 
-  proView: {
-    marginTop: 20,
-    height: "20%",
-    width: "90%",
-    backgroundColor: "white",
+
+  title1: {
+    fontSize: 30,
+    fontWeight: "bold",
+    borderBottomWidth: 5,
+    alignItems:"flex-start",
+    borderBottomColor: "#01b4ed"
+
+  },
+
+
+
+  proTitle: {
+    flex: 1,
+    backgroundColor: "blue"
+  },
+
+
+
+  imgView: {
+    marginTop: 30,
+    marginBottom: 10,
+    marginStart: 20,
+    marginEnd: 20,
+    flexDirection: "row",
     borderRadius: 20,
+    backgroundColor: "white",
     shadowColor: "'black'",
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
   },
 
-  prDetailsView: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "flex-start",
-
-  },
-
-  imgView: {
-
-    width: "40%",
-    borderRadius: 20,
-    backgroundColor: "red",
-  },
-
   pImage: {
-    width: 135,
+    width: 165,
     height: 120,
-    borderRadius: 20
+    borderRadius: 20,
   },
 
-  pdView: {
-    flex: 1,
-
-  },
-
-  pTitle: {
-    fontSize: 20,
-    fontWeight: "bold",
-    marginStart: 20,
-    marginTop: 10,
-
-  },
-
-  pDiscription: {
-    fontSize: 10,
-    marginStart: 20,
-    marginTop: 10,
-  },
 
   pTime: {
     fontSize: 12,
@@ -209,6 +176,36 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
 
+  ingText: {
+    marginTop: 15,
+    fontSize: 12,
+  },
+
+  checkBtn: {
+    width: 100,
+    height: 25,
+    marginTop: 10,
+    backgroundColor: "green",
+    borderRadius: 20,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  ingredientSite: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 10,
+
+  },
+
+  startBtn: {
+    flex:1,
+  },
+
+  scrollView1:{
+height:20,
+  },
 
 
 });
