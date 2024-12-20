@@ -1,7 +1,12 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, Pressable, Alert } from 'react-native';
 export default function App() {
+
+  const showAlert = () => {
+    Alert.alert("Hello!", "This is a simple alert.");
+  };
+
   return (
 
     <View style={styles.view2}>
@@ -30,14 +35,41 @@ export default function App() {
       <View style={styles.reView}>
 
         {/* start producy*/}
-        <LinearGradient colors={['#01b4ed', '#88ff89']}
-          style={styles.proView}
-          start={{ x: 1, y: 0 }}
-          end={{ x: 0, y: 1 }}  >
-            <View style={styles.prDetailsView}>
-              <View><Text>Hello</Text></View>
-              <View><Text>Hello2</Text></View>
+        <Pressable style={styles.proView}
+          onPress={showAlert}>
+          <View style={styles.prDetailsView}>
+            <View style={styles.imgView}>
+              <Image source={require('./assets/image/watalappan.jpg')} contentFit={"contain"} style={styles.pImage} />
             </View>
+            <View style={styles.pdView}>
+              <Text style={styles.pTitle}>Watalappan</Text>
+              <Text style={styles.pDiscription}>
+              Watalappan is a creamy Sri Lankan dessert with jaggery, 
+              coconut milk, and spices, enjoyed at festivals.
+                </Text>
+              <Text style={styles.pTime}>Time : 15 : 00 Min</Text>
+
+            </View>
+          </View>
+
+
+
+        </Pressable>
+
+        <LinearGradient colors={['#01b4ed', '#88ff89']}
+          style={styles.proView}
+          start={{ x: 1, y: 0 }}
+          end={{ x: 0, y: 1 }}  >
+
+
+
+        </LinearGradient>
+
+        <LinearGradient colors={['#01b4ed', '#88ff89']}
+          style={styles.proView}
+          start={{ x: 1, y: 0 }}
+          end={{ x: 0, y: 1 }}  >
+
 
 
 
@@ -52,25 +84,6 @@ export default function App() {
 
         </LinearGradient>
 
-        <LinearGradient colors={['#01b4ed', '#88ff89']}
-          style={styles.proView}
-          start={{ x: 1, y: 0 }}
-          end={{ x: 0, y: 1 }}  >
-
-
-
-
-        </LinearGradient>
-
-        <LinearGradient colors={['#01b4ed', '#88ff89']}
-          style={styles.proView}
-          start={{ x: 1, y: 0 }}
-          end={{ x: 0, y: 1 }}  >
-
-
-
-        </LinearGradient>
-        
         <View >
 
         </View>
@@ -114,8 +127,8 @@ const styles = StyleSheet.create({
   },
 
   logo: {
-    width: 80,
-    height: 80,
+    width: 100,
+    height: 100,
   },
 
   logoText: {
@@ -125,7 +138,7 @@ const styles = StyleSheet.create({
   },
 
   rText: {
-    fontSize: 24,
+    fontSize: 30,
     fontWeight: 'bold',
     marginStart: 30,
     marginTop: 20,
@@ -142,19 +155,59 @@ const styles = StyleSheet.create({
     marginTop: 20,
     height: "20%",
     width: "90%",
+    backgroundColor: "white",
     borderRadius: 20,
     shadowColor: "'black'",
-    shadowOffset: { width: 5, height: 5 },
-    shadowOpacity: 1,
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.25,
     shadowRadius: 3.84,
   },
 
   prDetailsView: {
-    flex:1,
+    flex: 1,
     flexDirection: "row",
-    justifyContent:"flex-start",
-    alignItems:"center",
-  }
+    justifyContent: "flex-start",
+
+  },
+
+  imgView: {
+
+    width: "40%",
+    borderRadius: 20,
+    backgroundColor: "red",
+  },
+
+  pImage: {
+    width: 135,
+    height: 120,
+    borderRadius: 20
+  },
+
+  pdView: {
+    flex: 1,
+
+  },
+
+  pTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginStart: 20,
+    marginTop: 10,
+
+  },
+
+  pDiscription: {
+    fontSize: 10,
+    marginStart: 20,
+    marginTop: 10,
+  },
+
+  pTime: {
+    fontSize: 12,
+    fontWeight: "bold",
+    marginStart: 20,
+    marginTop: 15,
+  },
 
 
 
